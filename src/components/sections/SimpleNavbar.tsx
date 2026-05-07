@@ -33,7 +33,6 @@ const SimpleNavbar = () => {
         
         <ul className="hidden md:flex items-center gap-8 text-sm font-medium mx-auto">
           <li><a href="/#como-funciona" className="hover:text-primary transition-colors">Como funciona</a></li>
-          <li><a href="/#precos" className="hover:text-primary transition-colors">Planos</a></li>
           <li><a href="/#contato" className="hover:text-primary transition-colors">Contato</a></li>
         </ul>
 
@@ -41,7 +40,7 @@ const SimpleNavbar = () => {
           {/* TODO: hook up later */}
           <Button variant="ghost" size="sm">Login</Button>
           {/* TODO: hook up later */}
-          <Button variant="default" size="sm">Criar Conta</Button>
+          <Button variant="default" size="sm">Contratar</Button>
         </div>
       </nav>
     </header>

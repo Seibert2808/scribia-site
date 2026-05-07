@@ -4,9 +4,9 @@ import livebookImage from "@/assets/images/livebook-tablet-home.png";
 
 const LivebookSection = () => {
   const handleScrollToPlans = () => {
-    const plansSection = document.getElementById('precos');
-    if (plansSection) {
-      plansSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const contactSection = document.getElementById('contato');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -44,7 +44,7 @@ const LivebookSection = () => {
               size="lg"
               className="bg-white text-primary hover:bg-white/90 font-bold px-8 py-6 text-lg shadow-2xl hover-scale"
             >
-              ASSINAR JÁ!
+              QUERO CONTRATAR!
             </Button>
           </div>
           

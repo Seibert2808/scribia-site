@@ -6,10 +6,8 @@ import FeaturesSection from "@/components/sections/new/FeaturesSection";
 import LivebookSection from "@/components/sections/new/LivebookSection";
 import BiaSection from "@/components/sections/new/BiaSection";
 import MetricsSection from "@/components/sections/new/MetricsSection";
-import PricingSectionNew from "@/components/sections/new/PricingSectionNew";
 import FAQSectionNew from "@/components/sections/new/FAQSectionNew";
 import DemoSection from "@/components/sections/new/DemoSection";
-import FinalCTA from "@/components/sections/new/FinalCTA";
 import ContactSection from "@/components/sections/new/ContactSection";
 import Footer from "@/components/sections/Footer";
 import { Helmet } from "react-helmet-async";
@@ -79,10 +77,8 @@ const Index = () => {
         <LivebookSection />
         <BiaSection />
         <MetricsSection />
-        <PricingSectionNew />
         <FAQSectionNew />
         <DemoSection />
-        <FinalCTA />
         <ContactSection />
       </main>
       <Footer />
