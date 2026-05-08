@@ -5,6 +5,8 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
+const WHATSAPP_NUMBER = "5521979269311";
+
 interface AgendarSessaoDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -25,7 +27,6 @@ const AgendarSessaoDialog = ({ open, onOpenChange }: AgendarSessaoDialogProps) =
     email: "",
     whatsapp: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateForm = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -46,36 +47,22 @@ const AgendarSessaoDialog = ({ open, onOpenChange }: AgendarSessaoDialogProps) =
     return true;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
 
-    setIsSubmitting(true);
-    try {
-      const payload = {
-        nome: formData.nome.trim(),
-        empresa: formData.empresa.trim() || null,
-        email: formData.email.trim(),
-        whatsapp: formData.whatsapp.replace(/\D/g, ""),
-      };
+    const text = `Olá! Quero agendar uma Sessão Estratégica do ScribIA.
 
-      const response = await fetch("https://sabrinaseibert.app.n8n.cloud/webhook/sessaoestrategica", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+*Nome:* ${formData.nome.trim()}
+*Empresa:* ${formData.empresa.trim() || "—"}
+*Email:* ${formData.email.trim()}
+*WhatsApp:* ${formData.whatsapp}`;
 
-      if (!response.ok) throw new Error("Erro ao enviar");
-
-      toast.success("Mensagem enviada com sucesso. Aguarde o contato do Setor de Planejamento do ScribIA.");
-      setFormData({ nome: "", empresa: "", email: "", whatsapp: "" });
-      onOpenChange(false);
-    } catch (error) {
-      console.error("Erro ao enviar:", error);
-      toast.error("Erro ao agendar sessão. Tente novamente.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+    toast.success("Abrindo WhatsApp para você enviar sua solicitação.");
+    setFormData({ nome: "", empresa: "", email: "", whatsapp: "" });
+    onOpenChange(false);
   };
 
   return (
@@ -133,8 +120,8 @@ const AgendarSessaoDialog = ({ open, onOpenChange }: AgendarSessaoDialogProps) =
               maxLength={15}
             />
           </div>
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
-            {isSubmitting ? "Enviando..." : "Agendar Sessão"}
+          <Button type="submit" className="w-full">
+            Enviar via WhatsApp
           </Button>
         </form>
       </DialogContent>

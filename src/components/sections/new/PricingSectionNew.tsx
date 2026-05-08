@@ -4,49 +4,74 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import AgendarSessaoDialog from "@/components/AgendarSessaoDialog";
 
-const plans = [
+type Plan = {
+  name: string;
+  range: string;
+  price: number | null;
+  features: string[];
+  cta: string;
+  featured: boolean;
+};
+
+const plans: Plan[] = [
   {
-    name: "Basic",
-    description: "Perfeito para começar",
-    monthlyPrice: 0,
-    annualPrice: 0,
+    name: "Starter",
+    range: "Até 99 participantes",
+    price: 2500,
     features: [
-      "3 ebooks por dia",
-      "Acesso à plataforma ScribIA",
-      "Biblioteca ScribIA de eventos",
-      "Ebooks compactos não personalizados",
+      "Plataforma ScribIA durante o evento",
+      "Livebook personalizado para cada participante",
+      "Tutor IA — Bia",
+      "Métricas básicas de engajamento",
     ],
-    cta: "Começar Grátis",
+    cta: "Quero este plano",
     featured: false,
   },
   {
-    name: "Plus",
-    description: "Para quem quer ilimitado",
-    monthlyPrice: 68,
-    annualPrice: 48,
+    name: "Essencial",
+    range: "100 a 999 participantes",
+    price: 10000,
     features: [
-      "Livebooks personalizados ilimitados",
-      "Tutor IA completo",
-      "Dashboard avançado",
-      "Integrações com plataformas",
-      "Suporte prioritário",
+      "Tudo do plano Starter",
+      "Equipe ScribIA captura áudio no local",
+      "Painel completo de métricas",
+      "Suporte dedicado durante o evento",
     ],
-    cta: "Assinar Agora",
+    cta: "Quero este plano",
     featured: true,
   },
   {
-    name: "Eventos, Patrocinadores e Influenciadores",
-    description: "Soluções exclusivas",
-    monthlyPrice: null,
-    annualPrice: null,
-    features: ["Ferramentas personalizadas para eventos", "Suporte dedicado", "Configuração conforme necessidade"],
-    cta: "Agende sua Sessão",
+    name: "Premium",
+    range: "1.000 a 1.499 participantes",
+    price: 15000,
+    features: [
+      "Tudo do plano Essencial",
+      "Onboarding com a sua equipe",
+      "Personalização de marca nos Livebooks",
+      "Suporte prioritário",
+    ],
+    cta: "Quero este plano",
+    featured: false,
+  },
+  {
+    name: "Enterprise",
+    range: "Acima de 1.500 participantes",
+    price: null,
+    features: [
+      "Solução sob medida",
+      "Equipe técnica dedicada",
+      "SLA personalizado",
+      "Integrações sob demanda",
+    ],
+    cta: "Falar com a equipe",
     featured: false,
   },
 ];
 
+const formatPrice = (value: number) =>
+  value.toLocaleString("pt-BR", { minimumFractionDigits: 0 });
+
 const PricingSectionNew = () => {
-  const [isAnnual, setIsAnnual] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
@@ -60,28 +85,11 @@ const PricingSectionNew = () => {
             Escolha o Plano Ideal para Seu Evento
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Soluções flexíveis que crescem com suas necessidades
+            Preço único por evento, baseado no número de participantes
           </p>
         </div>
 
-        <div className="flex items-center justify-center gap-3 mb-10">
-          <span className="text-sm font-medium">Mensal</span>
-          <button
-            onClick={() => setIsAnnual(!isAnnual)}
-            className={`relative w-14 h-7 rounded-full transition-colors ${isAnnual ? "bg-primary" : "bg-muted"}`}
-          >
-            <span
-              className={`absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-background shadow transition-transform ${
-                isAnnual ? "translate-x-7" : ""
-              }`}
-            />
-          </button>
-          <span className="text-sm font-medium">
-            Anual <span className="text-primary font-semibold">(-30%)</span>
-          </span>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {plans.map((plan, idx) => (
             <Card
               key={idx}
@@ -94,16 +102,16 @@ const PricingSectionNew = () => {
                   Mais Popular
                 </div>
               )}
-              <CardContent className="p-8 flex flex-col h-full">
+              <CardContent className="p-6 flex flex-col h-full">
                 <h3 className="text-xl font-bold mb-1">{plan.name}</h3>
-                <p className="text-muted-foreground text-sm mb-4">{plan.description}</p>
+                <p className="text-muted-foreground text-sm mb-4">{plan.range}</p>
 
-                {plan.monthlyPrice !== null ? (
+                {plan.price !== null ? (
                   <div className="mb-6">
-                    <span className="text-4xl font-extrabold">
-                      R$ {isAnnual ? plan.annualPrice : plan.monthlyPrice}
+                    <span className="text-3xl font-extrabold">
+                      R$ {formatPrice(plan.price)}
                     </span>
-                    <span className="text-muted-foreground">/mês</span>
+                    <span className="text-muted-foreground text-sm"> /evento</span>
                   </div>
                 ) : (
                   <div className="mb-6">
@@ -123,11 +131,7 @@ const PricingSectionNew = () => {
                 <Button
                   className="w-full"
                   variant={plan.featured ? "cta" : "outline"}
-                  onClick={() => {
-                    if (plan.monthlyPrice === null) {
-                      setIsDialogOpen(true);
-                    }
-                  }}
+                  onClick={() => setIsDialogOpen(true)}
                 >
                   {plan.cta}
                 </Button>

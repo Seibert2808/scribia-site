@@ -20,8 +20,14 @@ const DemoSection = () => {
             </p>
             <Button onClick={handleDemoClick} size="lg">Agendar demo</Button>
           </div>
-          <div className="bg-muted/30 rounded-xl aspect-video flex items-center justify-center">
-            <div className="text-muted-foreground">Vídeo de demo (placeholder)</div>
+          <div className="rounded-xl aspect-video overflow-hidden shadow-lg">
+            <iframe
+              src="https://www.youtube.com/embed/78P9VtLrx-4"
+              title="Demonstração ScribIA"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="w-full h-full border-0"
+            />
           </div>
         </div>
       </div>

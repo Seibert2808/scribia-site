@@ -19,12 +19,13 @@ const NewHero = () => {
         </div>
         
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
-          Transforme Eventos em Conhecimento Duradouro com IA
+          Transforme Eventos em Ativos Digitais com IA
         </h1>
         
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
-          O ecossistema inteligente que conecta participantes, organizadores, palestrantes e patrocinadores, 
-          criando Livebooks personalizados em minutos e prolongando o impacto de cada evento.
+          Nosso ecossistema de inteligência artificial transforma o engajamento dos participantes,
+          prolonga o impacto dos seus eventos e desbloqueia novas fontes de receita para organizadores,
+          palestrantes e patrocinadores.
         </p>
         
         <div className="flex flex-wrap justify-center gap-4 mb-10">

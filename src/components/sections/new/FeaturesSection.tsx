@@ -97,7 +97,7 @@ const FeaturesSection = () => {
       {
         icon: Eye,
         title: "Visibilidade Estendida",
-        description: "Sua marca presente nos Livebooks e interações pós-evento",
+        description: "Sua marca presente nos diversos ativos digitais e nas interações pós-evento",
       },
       {
         icon: Target,
