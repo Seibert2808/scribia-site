@@ -213,7 +213,7 @@ const OrganizadoresLanding = () => {
               Login
             </Button>
             <Button variant="cta" size="sm" onClick={handleCTAClick}>
-              Quero me inscrever
+              Quero contratar
             </Button>
           </div>
 
@@ -223,7 +223,7 @@ const OrganizadoresLanding = () => {
               Login
             </Button>
             <Button variant="cta" size="sm" onClick={handleCTAClick}>
-              Inscrever-se
+              Contratar
             </Button>
           </div>
         </nav>

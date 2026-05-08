@@ -6,15 +6,16 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 
+const WHATSAPP_NUMBER = "5521979269311";
+
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -34,31 +35,18 @@ const ContactSection = () => {
       return;
     }
 
-    setIsSubmitting(true);
+    const text = `Olá! Vim pelo site do ScribIA.
 
-    try {
-      const payload = {
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        message: formData.message.trim(),
-      };
+*Nome:* ${formData.name.trim()}
+*Email:* ${formData.email.trim()}
 
-      const response = await fetch("https://sabrinaseibert.app.n8n.cloud/webhook-test/emailcontato", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+*Mensagem:*
+${formData.message.trim()}`;
 
-      if (!response.ok) throw new Error("Erro ao enviar");
-
-      toast.success("Mensagem enviada com sucesso! Entraremos em contato em breve.");
-      setFormData({ name: "", email: "", message: "" });
-    } catch (error) {
-      console.error("Erro ao enviar:", error);
-      toast.error("Erro ao enviar mensagem. Tente novamente.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+    toast.success("Abrindo WhatsApp para você enviar a mensagem.");
+    setFormData({ name: "", email: "", message: "" });
   };
 
   return (
@@ -107,8 +95,8 @@ const ContactSection = () => {
                 maxLength={1000}
               />
             </div>
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
-              {isSubmitting ? "Enviando..." : "Enviar"}
+            <Button type="submit" className="w-full">
+              Enviar via WhatsApp
             </Button>
           </form>
         </Card>

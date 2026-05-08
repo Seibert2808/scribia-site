@@ -34,7 +34,7 @@ const Navbar = () => {
           {/* TODO: hook up later */}
           <Button variant="outline" size="sm">Login</Button>
           {/* TODO: hook up later */}
-          <Button variant="cta" size="sm" className="hover-scale">Criar Conta</Button>
+          <Button variant="cta" size="sm" className="hover-scale">Contratar</Button>
         </div>
 
         {/* Mobile Menu */}
@@ -60,7 +60,7 @@ const Navbar = () => {
                 {/* TODO: hook up later */}
                 <Button variant="outline" className="w-full" onClick={() => setIsOpen(false)}>Login</Button>
                 {/* TODO: hook up later */}
-                <Button variant="cta" className="w-full" onClick={() => setIsOpen(false)}>Criar Conta</Button>
+                <Button variant="cta" className="w-full" onClick={() => setIsOpen(false)}>Contratar</Button>
               </div>
             </nav>
           </SheetContent>

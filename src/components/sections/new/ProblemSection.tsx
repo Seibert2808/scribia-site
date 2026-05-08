@@ -1,4 +1,4 @@
-import { AlertTriangle, Users, TrendingUp, Megaphone } from "lucide-react";
+import { AlertTriangle, Users, TrendingUp, Megaphone, Mic } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const ProblemSection = () => {
@@ -18,7 +18,7 @@ const ProblemSection = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           <Card className="border-t-4 border-t-primary hover:-translate-y-2 transition-transform">
             <CardContent className="p-6">
               <div className="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-4">
@@ -68,6 +68,41 @@ const ProblemSection = () => {
                 <li className="flex items-start gap-2">
                   <span className="text-destructive font-bold mt-1">✗</span>
                   <span>Conteúdo não reutilizável</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-destructive font-bold mt-1">✗</span>
+                  <span>Deixam de gerar receita recorrente</span>
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card className="border-t-4 border-t-primary hover:-translate-y-2 transition-transform">
+            <CardContent className="p-6">
+              <div className="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-4">
+                <Mic className="h-7 w-7 text-primary-foreground" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-primary">Palestrantes</h3>
+              <ul className="space-y-2 text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="text-destructive font-bold mt-1">✗</span>
+                  <span>Esquecidos em 48h após o aplauso final</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-destructive font-bold mt-1">✗</span>
+                  <span>Plateia promete seguir, mas raramente segue</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-destructive font-bold mt-1">✗</span>
+                  <span>Perdem vendas de cursos, livros e mentorias</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-destructive font-bold mt-1">✗</span>
+                  <span>Sem prova social para conquistar novos palcos</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-destructive font-bold mt-1">✗</span>
+                  <span>Horas de preparo que viram conteúdo descartável</span>
                 </li>
               </ul>
             </CardContent>

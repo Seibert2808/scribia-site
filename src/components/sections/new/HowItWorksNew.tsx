@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 
 const HowItWorksNew = () => {
   const handleScrollToPlans = () => {
-    const plansSection = document.getElementById('precos');
-    if (plansSection) {
-      plansSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const contactSection = document.getElementById('contato');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -16,7 +16,7 @@ const HowItWorksNew = () => {
       icon: Upload,
       title: "Captura",
       description:
-        "Upload ou gravação ao vivo direto na plataforma, pela rede de internet. Inclusão de observações dos usuários.",
+        "Áudios gravados em software próprio, que envia os dados à plataforma de Inteligência Artificial Agêntica, responsável por gerar diversos ativos digitais.",
     },
     {
       number: 2,
@@ -29,7 +29,7 @@ const HowItWorksNew = () => {
       icon: BookOpen,
       title: "Geração",
       description:
-        "Livebooks estruturados em PDF, Word ou versão interativa web/mobile em minutos. QR Code que pode ser projetado no telão do evento ou ser enviado aos participantes em tempo real.",
+        "Livebooks personalizados, Plano de Ação, Cards para Redes Sociais, Slides e Áudios na íntegra — em tempo real.",
     },
     {
       number: 4,
@@ -81,7 +81,7 @@ const HowItWorksNew = () => {
             size="lg"
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 py-6 text-lg shadow-xl hover-scale"
           >
-            QUERO FAZER MINHA ASSINATURA!
+            QUERO CONTRATAR O SCRIBIA!
           </Button>
         </div>
       </div>
